@@ -1,0 +1,2 @@
+IMAGE=False
+VIDEO=True
