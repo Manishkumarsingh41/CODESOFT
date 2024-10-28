@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Captioning AI</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      form {
+        margin: 20px;
+      }
+      input[type="file"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        background-color: #337ab7; /* Changed to a more professional blue color */
+        color: #fff;
+        padding: 12px 30px; /* Increased padding for a more prominent button */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px; /* Increased font size for better readability */
+        font-weight: bold; /* Made the text bold for a more prominent button */
+      }
+      input[type="submit"]:hover {
+        background-color: #23527c; /* Changed to a darker blue color on hover */
+      }
+      #caption {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      #mood, #hashtags, #emoji, #number {
+        margin-top: 10px;
+      }
+      .caption-box {
+        background-color: #f7f7f7;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Image Captioning AI</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <br>
+      <label for="num_captions">Number of Captions:</label>
+      <input type="number" name="num_captions" required>
+      <br>
+      <label for="num_hashtags">Number of Hashtags:</label>
+      <input type="number" name="num_hashtags" required>
+      <br>
+      <input type="text" id="mood" name="mood" placeholder="Mood">
+      <br>
+      <input type="text" id="emoji" name="emoji" placeholder="Emoji">
+      <br>
+      <input type="number" id="number" name="number" placeholder="Number">
+      <br>
+      <input type="submit" value="Upload and Generate Caption">
+    </form>
+    {% if captions %}
+      <div class="caption-box">
+        <h2>Captions:</h2>
+        <ul>
+          {% for caption in captions %}
+            <li>{{ loop.index }}. {{ caption }} <button onclick="copyCaption(this)">Copy</button></li>
+          {% endfor %}
+        </ul>
+        <button onclick="copyAllCaptions()">Copy All</button>
+      </div>
+    {% endif %}
+    {% if hashtags %}
+      <h2>Hashtags:</h2>
+      <ul>
+        {% for hashtag in hashtags %}
+          <li>{{ hashtag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if mood %}
+      <p id="mood">Mood: {{ mood }}</p>
+    {% endif %}
+    {% if emoji %}
+      <p id="emoji">Emoji: {{ emoji }}</p>
+    {% endif %}
+    {% if number %}
+      <p id="number">Number: {{ number }}</p>
+    {% endif %}
+    <script>
+      function copyCaption(element) {
+        var caption = element.parentNode.textContent;
+        navigator.clipboard.writeText(caption);
+      }
+      function copyAllCaptions() {
+        var captions = document.querySelectorAll('.caption-box ul li');
+        var allCaptions = '';
+        captions.forEach(function(caption) {
+          allCaptions += caption.textContent + '\n';
+        });
+        navigator.clipboard.writeText(allCaptions);
+      }
+    </script>
+  </body>
+</html>
