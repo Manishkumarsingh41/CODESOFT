@@ -1,7 +1,6 @@
 import cv2
 from constants import VIDEO, IMAGE
 
-#Load the cascade classifier
 facecascade = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
 if facecascade.empty():
    print("Error: Unable to load the cascade classifier!")
