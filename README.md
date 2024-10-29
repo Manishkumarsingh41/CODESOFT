@@ -33,3 +33,14 @@ Overall, the code offers an interactive gaming experience, allowing users to pla
 
 Task 4:AI-BASED-IMAGE-CAPTIONING-MODEL
 
+This project is a simple, user-friendly web app built with Flask that helps you add the perfect captions and hashtags to your photos. Just upload an image, choose the mood, and set the number of captions and hashtags you want. The app resizes the image, encodes it, and uses OpenAI’s API to create unique, context-based captions and hashtags tailored to your preferences.
+
+It’s designed to be easy and secure, supporting common image formats, so you can effortlessly create engaging social media content with a personal touch.
+
+
+
+
+
+
+
+
